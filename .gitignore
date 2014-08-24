@@ -1,2 +1,6 @@
 obj/
-bin/
+bin/Game
+
+# OS Specific files
+desktop.ini
+.DS_Store

@@ -10,7 +10,7 @@ class ImageManager {
 public:
 	void addTexture(string, string);
 
-	sf::Texture* getImage(string);
+	sf::Texture getImage(string);
 
 
 };

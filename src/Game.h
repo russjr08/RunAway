@@ -19,10 +19,12 @@ public:
         std::cout << "[ERROR] " << msg << std::endl;
     }
 
+    const static int WIDTH = 800, HEIGHT = 600;
+
     void open();
     void close();
     void render();
-    void update();
+    void update(float);
 
     SoundManager sounds;
 	ImageManager images;

@@ -6,10 +6,14 @@
 
 class Entity {
 
+protected:
+    Game* game;
+    sf::Vector2f pos;
+
 public:
-    Entity(Game*);
+    Entity(Game* game){ this->game = game; }
     virtual void render(sf::RenderTarget* window);
-    virtual void update();
+    virtual void update(float);
 
 };
 
