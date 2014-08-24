@@ -8,7 +8,7 @@ class Player : public virtual Entity {
 protected:
 
 public:
-
+    Player(Game*);
 
 };
 

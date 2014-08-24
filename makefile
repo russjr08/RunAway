@@ -10,6 +10,7 @@ flags= \
  -lsfml-graphics \
  -lsfml-window \
  -lsfml-system \
+ -lsfml-audio \
  -std=c++11
 else
 flags= \
@@ -17,6 +18,7 @@ flags= \
  -lsfml-graphics-s \
  -lsfml-window-s \
  -lsfml-system-s \
+ -lsfml-audio-s \
  -std=c++11
 endif
 

@@ -7,7 +7,7 @@
 class Entity {
 
 public:
-
+    Entity(Game*);
     virtual void render(sf::RenderTarget* window);
     virtual void update();
 

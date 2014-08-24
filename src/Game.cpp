@@ -4,14 +4,18 @@
 #include "Entity/Player.h"
 
 sf::RenderWindow window(sf::VideoMode(800, 600), "RunAway!");
-Player player;
 
-// Forward declarations
-void render();
-void update();
 
 int main(){
 
+    Game game;
+    game.open();
+
+    return 0;
+
+}
+
+void Game::open(){
     while(window.isOpen()){
     sf::Event event;
         while(window.pollEvent(event)){
@@ -34,15 +38,12 @@ int main(){
 
         }
     }
-
-  return 0;
-
 }
 
-void render(){
-    player.render(&window);
+void Game::render(){
+    // player.render(&window);
 }
 
-void update(){
-    player.update();
+void Game::update(){
+    // player.update();
 }
