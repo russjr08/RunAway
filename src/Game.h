@@ -8,6 +8,8 @@
 
 
 class Game {
+private:
+    sf::Font roboto;
 
 public:
 
@@ -25,6 +27,7 @@ public:
     void close();
     void render();
     void update(float);
+    sf::Text getText(string, uint size);
 
     SoundManager sounds;
 	ImageManager images;

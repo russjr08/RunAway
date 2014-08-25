@@ -31,9 +31,13 @@ void Game::open(){
     sun.setFillColor(sf::Color::Yellow);
     sun.setPosition(sf::Vector2f(Game::WIDTH - 100, 0));
 
-    while(window.isOpen()){
+    if (!this->roboto.loadFromFile("assets/fonts/roboto.ttf")){
+        Game::error("Failed to load main game font!");
+    }
+
+    while (window.isOpen()){
     sf::Event event;
-        while(window.pollEvent(event)){
+        while (window.pollEvent(event)){
             sf::Time delta = deltaClock.restart();
 
             if(event.type == sf::Event::Closed){
@@ -59,14 +63,24 @@ void Game::open(){
 void Game::render(){
     // player.render(&window);
     window.draw(sun);
-    for(Entity& entity : entities){
+    for (Entity& entity : entities){
         entity.render(&window);
     }
 }
 
 void Game::update(float delta){
     // player.update();
-    for(Entity& entity : entities){
+    for (Entity& entity : entities){
         entity.update(delta);
     }
+}
+
+sf::Text Game::getText(string msg, uint size){
+    sf::Text text;
+    text.setFont(this->roboto);
+    text.setString(msg);
+    text.setCharacterSize(size);
+
+    return text;
+
 }
