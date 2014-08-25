@@ -4,6 +4,7 @@
 
 #include "Game.h"
 #include "Entity/Player.h"
+#include "Level/Tile.h"
 
 sf::RenderWindow window(sf::VideoMode(Game::WIDTH, Game::HEIGHT), "RunAway!");
 
@@ -12,6 +13,9 @@ sf::Clock deltaClock;
 sf::CircleShape sun(50);
 
 std::vector<Entity> entities;
+
+Game* Game::instance;
+
 
 int main(){
 
@@ -23,6 +27,10 @@ int main(){
 }
 
 void Game::open(){
+
+    instance = this;
+
+    Tile::loadTileTextures();
 
     entities.push_back(Player(this));
 
@@ -74,6 +82,7 @@ void Game::update(float delta){
         entity.update(delta);
     }
 }
+
 
 sf::Text Game::getText(string msg, uint size){
     sf::Text text;

@@ -10,6 +10,7 @@
 class Game {
 private:
     sf::Font roboto;
+    static Game* instance;
 
 public:
 
@@ -20,6 +21,8 @@ public:
     static void error(std::string msg){
         std::cout << "[ERROR] " << msg << std::endl;
     }
+
+    static Game* getInstance() { return instance; }
 
     const static int WIDTH = 800, HEIGHT = 600;
 
