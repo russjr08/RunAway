@@ -22,7 +22,7 @@ flags= \
  -std=c++11
 endif
 
-sfmlDir = C:/SFML/SFML-2.1
+sfmlDir = C:/SFML/TDM-SFML-2.1
 
 ifdef linux
     CFLAGS=$(flags)

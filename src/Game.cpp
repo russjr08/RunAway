@@ -84,7 +84,7 @@ void Game::update(float delta){
 }
 
 
-sf::Text Game::getText(string msg, uint size){
+sf::Text Game::getText(string msg, int size){
     sf::Text text;
     text.setFont(this->roboto);
     text.setString(msg);

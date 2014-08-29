@@ -30,7 +30,7 @@ public:
     void close();
     void render();
     void update(float);
-    sf::Text getText(string, uint size);
+    sf::Text getText(string, int size);
 
     SoundManager sounds;
 	ImageManager images;
