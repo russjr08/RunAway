@@ -4,21 +4,21 @@ objDir=obj/
 
 srcDir=src/
 
-ifdef dynamic
-flags= \
- -DSFML_DYNAMIC \
- -lsfml-graphics \
- -lsfml-window \
- -lsfml-system \
- -lsfml-audio \
- -std=c++11
-else
+ifdef static
 flags= \
  -DSFML_STATIC \
  -lsfml-graphics-s \
  -lsfml-window-s \
  -lsfml-system-s \
  -lsfml-audio-s \
+ -std=c++11
+else
+flags= \
+ -DSFML_DYNAMIC \
+ -lsfml-graphics \
+ -lsfml-window \
+ -lsfml-system \
+ -lsfml-audio \
  -std=c++11
 endif
 
