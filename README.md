@@ -5,8 +5,7 @@ A game with no real purpose. I'm creating this game to help me learn the ropes
 of C++ and SFML.
 
 
-How To Compile / Submit a Pull Request
-======================================
+## How To Compile / Submit a Pull Request
 1) Clone the project
 
 2) Download and install [SFML](http://sfml-dev.org) for your platform
@@ -24,6 +23,5 @@ you may need to create a bin and obj folder (and a subfolder for all of the subf
 
 7) (All Platforms) Verify make works, and you should be ready to roll!
 
-Credits
-=======
+## Credits
 [Triavanicus](http://twitch.tv/Triavanicus) for letting me use [his makefile](https://gist.github.com/Triavanicus/3a37db4319f476afa403) :D
