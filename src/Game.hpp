@@ -3,8 +3,8 @@
 
 #include <iostream>
 
-#include "SoundManager.h"
-#include "ImageManager.h"
+#include "SoundManager.hpp"
+#include "ImageManager.hpp"
 
 
 class Game {
@@ -30,7 +30,7 @@ public:
     void close();
     void render();
     void update(float);
-    sf::Text getText(string, int size);
+    sf::Text getText(string, unsigned int size);
 
     SoundManager sounds;
 	ImageManager images;

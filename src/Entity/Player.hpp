@@ -1,11 +1,11 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "Entity.h"
+#include "Entity.hpp"
+#include "../Component/Component.hpp"
 
 class Player : public virtual Entity {
 
-protected:
 
 public:
     Player(Game*);

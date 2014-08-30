@@ -1,5 +1,5 @@
-#include "Tile.h"
-#include "../Game.h"
+#include "Tile.hpp"
+#include "../Game.hpp"
 
 void Tile::loadTileTextures(){
     Game::getInstance()->images.addTexture("dirt", "assets/tiles/dirt.png");

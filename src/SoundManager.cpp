@@ -1,5 +1,5 @@
 
-#include "SoundManager.h"
+#include "SoundManager.hpp"
 #include <map>
 
 using namespace std;

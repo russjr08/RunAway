@@ -1,4 +1,5 @@
-#include "Player.h"
+#include "Player.hpp"
+#include "../Component/GravityComponent.hpp"
 
 // sf::RectangleShape shape(sf::Vector2f(50, 120));
 
@@ -12,6 +13,9 @@ bool jumping = false;
 
 float speed;
 
+std::vector<Component> components;
+
+
 Player::Player(Game* game) : Entity(game){
     pos.y = 300;
     // Add texture to image registry
@@ -20,6 +24,8 @@ Player::Player(Game* game) : Entity(game){
 
     texture_right = game->images.getImage("player_right");
     sprite.setTexture(texture_right);
+
+    components.push_back(GravityComponent());
 
 }
 
@@ -34,6 +40,10 @@ void jump(){
 void Entity::update(float delta){
 
     sprite.setPosition(this->pos);
+
+    for(Component comp : components){
+        comp.update(delta, this);
+    }
 
     if(jumping){
         if(speed > 0){
@@ -56,5 +66,8 @@ void Entity::update(float delta){
 }
 
 void Entity::render(sf::RenderTarget* window){
+    for(Component comp : components) {
+        comp.render(window, this);
+    }
     window->draw(sprite);
 }

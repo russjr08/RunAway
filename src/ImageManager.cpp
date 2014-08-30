@@ -1,5 +1,5 @@
-#include "ImageManager.h"
-#include "Game.h"
+#include "ImageManager.hpp"
+#include "Game.hpp"
 #include <map>
 
 map<string, sf::Texture> textures;

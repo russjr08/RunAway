@@ -2,9 +2,9 @@
 
 #include <map>
 
-#include "Game.h"
-#include "Entity/Player.h"
-#include "Level/Tile.h"
+#include "Game.hpp"
+#include "Entity/Player.hpp"
+#include "Level/Tile.hpp"
 
 sf::RenderWindow window(sf::VideoMode(Game::WIDTH, Game::HEIGHT), "RunAway!");
 
@@ -84,7 +84,7 @@ void Game::update(float delta){
 }
 
 
-sf::Text Game::getText(string msg, int size){
+sf::Text Game::getText(string msg, unsigned int size){
     sf::Text text;
     text.setFont(this->roboto);
     text.setString(msg);
