@@ -32,7 +32,9 @@ void Game::open(){
 
     Tile::loadTileTextures();
 
-    entities.push_back(Player(this));
+    _level = new Level("assets/level/lvl1.tmx");
+
+    entities.push_back(Player(this, _level));
 
     window.setFramerateLimit(60);
 
@@ -42,6 +44,7 @@ void Game::open(){
     if (!this->roboto.loadFromFile("assets/fonts/roboto.ttf")){
         Game::error("Failed to load main game font!");
     }
+
 
     while (window.isOpen()){
     sf::Event event;
@@ -71,6 +74,7 @@ void Game::open(){
 void Game::render(){
     // player.render(&window);
     window.draw(sun);
+    _level->render(&window);
     for (Entity& entity : entities){
         entity.render(&window);
     }
@@ -78,6 +82,7 @@ void Game::render(){
 
 void Game::update(float delta){
     // player.update();
+    _level->update();
     for (Entity& entity : entities){
         entity.update(delta);
     }

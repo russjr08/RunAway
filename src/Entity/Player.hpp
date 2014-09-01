@@ -8,7 +8,7 @@ class Player : public virtual Entity {
 
 
 public:
-    Player(Game*);
+    Player(Game*, Level*);
 
     constexpr static float MOVE_SPEED = 5.0f;
     constexpr static float JUMP_SPEED = 10.0f;

@@ -1,6 +1,6 @@
-#ifndef TILE_H
-#define TILE_H
+#pragma once
 
+#include <SFML/Graphics.hpp>
 
 class Tile {
 
@@ -10,11 +10,19 @@ public:
         GRASS
     };
 
+    Tile(Tile::TileType, sf::Vector2f);
+
     static void loadTileTextures();
 
+    void render(sf::RenderTarget*);
+    void update();
+
 private:
-    TileType type;
+    TileType _type;
+
+    sf::Sprite _sprite;
+    sf::Texture _texture;
+
+    sf::Vector2f _pos;
 
 };
-
-#endif TILE_H

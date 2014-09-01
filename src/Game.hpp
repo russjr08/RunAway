@@ -6,11 +6,15 @@
 #include "SoundManager.hpp"
 #include "ImageManager.hpp"
 
+#include "Level/Level.hpp"
 
+class Level;
 class Game {
 private:
     sf::Font roboto;
     static Game* instance;
+
+    Level* _level;
 
 public:
 

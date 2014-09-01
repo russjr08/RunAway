@@ -9,10 +9,11 @@ class Level {
 public:
     Level(std::string);
 
+    void render(sf::RenderTarget*);
+    void update();
+
 private:
-    std::vector<Tile> tiles;
-
-
+    std::vector<Tile *> _tiles;    
 };
 
 #endif

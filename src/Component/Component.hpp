@@ -5,6 +5,7 @@
 #include "../Entity/Entity.hpp"
 #include <SFML/Graphics.hpp>
 
+class Entity;
 class Component {
 
 public:

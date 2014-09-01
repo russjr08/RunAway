@@ -13,36 +13,36 @@ bool jumping = false;
 
 float speed;
 
-std::vector<Component> components;
 
-
-Player::Player(Game* game) : Entity(game){
-    pos.y = 300;
+Player::Player(Game* game, Level* level) : Entity(game, level){
     // Add texture to image registry
-    game->images.addTexture("player_left", "assets/character/player-left.png");
-    game->images.addTexture("player_right", "assets/character/player-right.png");
+    game->images.addTexture("player_left", "assets/character/player.png");
+    game->images.addTexture("player_right", "assets/character/player.png");
 
     texture_right = game->images.getImage("player_right");
     sprite.setTexture(texture_right);
 
-    components.push_back(GravityComponent());
+    pos.y = (Game::HEIGHT - sprite.getGlobalBounds().height) - 64;
+
+
+    components.push_back(new GravityComponent());
 
 }
 
 void jump(){
     // TODO: Continue working on jumping...
-    if(grounded){
-        jumping = true;
-        speed = 20;
-    }
+    // if(grounded){
+    //     jumping = true;
+    //     speed = 20;
+    // }
 }
 
 void Entity::update(float delta){
 
     sprite.setPosition(this->pos);
 
-    for(Component comp : components){
-        comp.update(delta, this);
+    for(Component* comp : components){
+        comp->update(delta, this);
     }
 
     if(jumping){
@@ -66,8 +66,8 @@ void Entity::update(float delta){
 }
 
 void Entity::render(sf::RenderTarget* window){
-    for(Component comp : components) {
-        comp.render(window, this);
+    for(Component* comp : components) {
+        comp->render(window, this);
     }
     window->draw(sprite);
 }
