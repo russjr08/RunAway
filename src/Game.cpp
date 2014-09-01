@@ -1,3 +1,4 @@
+
 #include <SFML/Graphics.hpp>
 
 #include <map>
@@ -5,6 +6,7 @@
 #include "Game.hpp"
 #include "Entity/Player.hpp"
 #include "Level/Tile.hpp"
+#include "FPS.hpp"
 
 sf::RenderWindow window(sf::VideoMode(Game::WIDTH, Game::HEIGHT), "RunAway!");
 
@@ -15,6 +17,8 @@ sf::CircleShape sun(50);
 std::vector<Entity> entities;
 
 Game* Game::instance;
+
+FPS* fps;
 
 
 int main(){
@@ -29,6 +33,7 @@ int main(){
 void Game::open(){
 
     instance = this;
+    fps = new FPS();
 
     Tile::loadTileTextures();
 
@@ -47,9 +52,8 @@ void Game::open(){
 
 
     while (window.isOpen()){
-    sf::Event event;
+        sf::Event event;
         while (window.pollEvent(event)){
-            sf::Time delta = deltaClock.restart();
 
             if(event.type == sf::Event::Closed){
                 window.close();
@@ -61,13 +65,18 @@ void Game::open(){
                 Game::debug("Escape key pressed, closing!");
             }
 
-            window.clear(sf::Color(3, 184, 244)); // Sky blue
-            update(delta.asSeconds());
-            render();
-
-            window.display();
 
         }
+
+        sf::Time delta = deltaClock.restart();
+        Game::debug(std::to_string(fps->getFPS()));
+        
+        window.clear(sf::Color(3, 184, 244)); // Sky blue
+        update(delta.asSeconds());
+        render();
+
+        window.display();
+        fps->update();
     }
 }
 
