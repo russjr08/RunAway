@@ -38,13 +38,15 @@ public:
 
     sf::View& getView();
 
+    sf::Vector2f getViewOffset();
+
     const static int WIDTH = 800, HEIGHT = 600;
 
     void open();
     void close();
     void render();
     void update(float);
-    sf::Text getText(string, unsigned int size);
+    sf::Text getText(string, unsigned int size, sf::Vector2f);
 
     SoundManager sounds;
 	ImageManager images;

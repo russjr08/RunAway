@@ -16,6 +16,8 @@ protected:
 
     Level* _level;
 
+    float _health = 10.0f;
+
 public:
     Entity(Game* game, Level* level) {
          this->game = game;
@@ -24,6 +26,8 @@ public:
 
     virtual void render(sf::RenderTarget*);
     virtual void update(float);
+
+    inline float getHealth() { return _health; }
 
 };
 

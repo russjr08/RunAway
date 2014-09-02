@@ -88,10 +88,8 @@ void Game::render(){
     // Draw Debug Text
     if(Game::DEBUGGING) {
         // TODO: Extract this to a variable (version)
-        window.draw(this->getText("RunAway v1.0 Alpha (Debug/Developer Mode)", 12));
-        sf::Text fpsText = this->getText("FPS: " + std::to_string(fps->getFPS()), 12);
-        fpsText.setPosition(0, 12);
-        window.draw(fpsText);
+        window.draw(this->getText("RunAway v1.0 Alpha (Debug/Developer Mode)", 12, sf::Vector2f(this->getViewOffset().x, 0)));
+        window.draw(this->getText("FPS: " + std::to_string(fps->getFPS()), 12, sf::Vector2f(this->getViewOffset().x, 12)));
     }
 
     window.draw(sun);
@@ -114,11 +112,20 @@ sf::View& Game::getView() {
     return _view;
 }
 
-sf::Text Game::getText(string msg, unsigned int size){
+sf::Vector2f Game::getViewOffset() {
+    sf::Vector2f viewCenter = _view.getCenter();
+    sf::Vector2f halfExtents = _view.getSize() / 2.0f;
+    return viewCenter - halfExtents;
+
+}
+
+sf::Text Game::getText(string msg, unsigned int size, sf::Vector2f pos){
     sf::Text text;
     text.setFont(this->roboto);
+    text.setColor(sf::Color::Black);
     text.setString(msg);
     text.setCharacterSize(size);
+    text.setPosition(pos);
 
     return text;
 

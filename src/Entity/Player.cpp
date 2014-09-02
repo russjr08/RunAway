@@ -1,5 +1,6 @@
 #include "Player.hpp"
 #include "../Component/GravityComponent.hpp"
+#include "../Component/HealthBarComponent.hpp"
 
 // sf::RectangleShape shape(sf::Vector2f(50, 120));
 
@@ -26,6 +27,7 @@ Player::Player(Game* game, Level* level) : Entity(game, level){
 
 
     components.push_back(new GravityComponent());
+    components.push_back(new HealthBarComponent());
 
 }
 
