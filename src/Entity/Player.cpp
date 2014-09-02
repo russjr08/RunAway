@@ -53,11 +53,16 @@ void Entity::update(float delta){
     }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
+        if(this->pos.x <= 0) return;
         this->pos.x = this->pos.x - Player::MOVE_SPEED;
+        game->getView().move(-4.2f, 0);
+
     }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
         this->pos.x = this->pos.x + Player::MOVE_SPEED;
+        game->getView().move(4.2f, 0);
+
     }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){

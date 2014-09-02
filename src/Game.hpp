@@ -12,14 +12,22 @@ class Level;
 class Game {
 private:
     sf::Font roboto;
+    sf::Font _minecraftia;
     static Game* instance;
+
+    sf::View _view;
 
     Level* _level;
 
 public:
 
+    static constexpr bool DEBUGGING = true;
+
+
     static void debug(std::string msg){
-        std::cout << "[DEBUG] " << msg << std::endl;
+        if(Game::DEBUGGING) {
+            std::cout << "[DEBUG] " << msg << std::endl;
+        }
     }
 
     static void error(std::string msg){
@@ -27,6 +35,8 @@ public:
     }
 
     static Game* getInstance() { return instance; }
+
+    sf::View& getView();
 
     const static int WIDTH = 800, HEIGHT = 600;
 

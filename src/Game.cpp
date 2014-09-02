@@ -39,9 +39,12 @@ void Game::open(){
 
     _level = new Level("assets/level/lvl1.tmx");
 
+    _view = sf::View(sf::Vector2f(800 / 2, 600 / 2), sf::Vector2f(800, 600));
+
     entities.push_back(Player(this, _level));
 
     window.setFramerateLimit(60);
+    window.setView(_view);
 
     sun.setFillColor(sf::Color::Yellow);
     sun.setPosition(sf::Vector2f(Game::WIDTH - 100, 0));
@@ -69,8 +72,7 @@ void Game::open(){
         }
 
         sf::Time delta = deltaClock.restart();
-        Game::debug(std::to_string(fps->getFPS()));
-        
+
         window.clear(sf::Color(3, 184, 244)); // Sky blue
         update(delta.asSeconds());
         render();
@@ -82,6 +84,16 @@ void Game::open(){
 
 void Game::render(){
     // player.render(&window);
+
+    // Draw Debug Text
+    if(Game::DEBUGGING) {
+        // TODO: Extract this to a variable (version)
+        window.draw(this->getText("RunAway v1.0 Alpha (Debug/Developer Mode)", 12));
+        sf::Text fpsText = this->getText("FPS: " + std::to_string(fps->getFPS()), 12);
+        fpsText.setPosition(0, 12);
+        window.draw(fpsText);
+    }
+
     window.draw(sun);
     _level->render(&window);
     for (Entity& entity : entities){
@@ -91,12 +103,16 @@ void Game::render(){
 
 void Game::update(float delta){
     // player.update();
+    window.setView(_view);
     _level->update();
     for (Entity& entity : entities){
         entity.update(delta);
     }
 }
 
+sf::View& Game::getView() {
+    return _view;
+}
 
 sf::Text Game::getText(string msg, unsigned int size){
     sf::Text text;
