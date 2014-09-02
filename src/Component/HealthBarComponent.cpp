@@ -5,7 +5,9 @@ void HealthBarComponent::render(sf::RenderTarget* window, Entity* entity) {
 
     // Outer health bar rectangle
     sf::RectangleShape outer(sf::Vector2f(80, 8));
-    outer.setFillColor(this->getColor(entity));
+    outer.setOutlineColor(this->getColor(entity));
+    outer.setOutlineThickness(2);
+    outer.setFillColor(sf::Color::Transparent);
     outer.setPosition(sf::Vector2f(entity->getPos().x - (entity->getSprite().getGlobalBounds().width / 2), entity->getPos().y - entity->getSprite().getGlobalBounds().height + 4));
     window->draw(outer);
 

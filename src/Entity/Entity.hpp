@@ -17,7 +17,7 @@ protected:
 
     Level* _level;
 
-    float _health = 7.0f;
+    float _health = 10.0f;
 
 public:
     Entity(Game* game, Level* level) {
