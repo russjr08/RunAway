@@ -3,18 +3,21 @@
 void HealthBarComponent::render(sf::RenderTarget* window, Entity* entity) {
     // TODO: Draw actual health bar...
 
+    float entityWidth = entity->getSprite().getGlobalBounds().width;
+    float entityHeight = entity->getSprite().getGlobalBounds().height;
+
     // Outer health bar rectangle
     sf::RectangleShape outer(sf::Vector2f(80, 8));
     outer.setOutlineColor(this->getColor(entity));
     outer.setOutlineThickness(2);
     outer.setFillColor(sf::Color::Transparent);
-    outer.setPosition(sf::Vector2f(entity->getPos().x - (entity->getSprite().getGlobalBounds().width / 2), entity->getPos().y - entity->getSprite().getGlobalBounds().height + 4));
+    outer.setPosition(sf::Vector2f(entity->getPos().x - (entityWidth / 2), entity->getPos().y - entityHeight + 4));
     window->draw(outer);
 
     // Inner health bar rectangle
     sf::RectangleShape inner(sf::Vector2f(entity->getHealth() * 8, 8));
     inner.setFillColor(this->getColor(entity));
-    inner.setPosition(sf::Vector2f(entity->getPos().x - (entity->getSprite().getGlobalBounds().width / 2), entity->getPos().y - entity->getSprite().getGlobalBounds().height + 4));
+    inner.setPosition(sf::Vector2f(entity->getPos().x - (entityWidth / 2), entity->getPos().y - entityHeight + 4));
     window->draw(inner);
 
 }
