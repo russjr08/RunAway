@@ -31,7 +31,6 @@ int main(){
 }
 
 void Game::open(){
-
     instance = this;
     fps = new FPS();
 
@@ -83,12 +82,9 @@ void Game::open(){
 }
 
 void Game::render(){
-    // player.render(&window);
-
     // Draw Debug Text
     if(Game::DEBUGGING) {
-        // TODO: Extract this to a variable (version)
-        window.draw(this->getText("RunAway v1.0 Alpha (Debug/Developer Mode)", 12, sf::Vector2f(this->getViewOffset().x, 0)));
+        window.draw(this->getText("RunAway v" + Game::getVersion() + " (Debug/Developer Mode)", 12, sf::Vector2f(this->getViewOffset().x, 0)));
         window.draw(this->getText("FPS: " + std::to_string(fps->getFPS()), 12, sf::Vector2f(this->getViewOffset().x, 12)));
     }
 
@@ -100,12 +96,16 @@ void Game::render(){
 }
 
 void Game::update(float delta){
-    // player.update();
-    window.setView(_view);
     _level->update();
+
     for (Entity& entity : entities){
         entity.update(delta);
     }
+
+    // Keep sun constantly on the top-right.
+    sun.setPosition(sf::Vector2f((Game::WIDTH - 100) + this->getViewOffset().x, 0));
+    
+    window.setView(_view);
 }
 
 sf::View& Game::getView() {

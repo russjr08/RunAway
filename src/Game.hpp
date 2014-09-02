@@ -36,6 +36,8 @@ public:
 
     static Game* getInstance() { return instance; }
 
+    static std::string getVersion() { return "1.0 alpha"; }
+
     sf::View& getView();
 
     sf::Vector2f getViewOffset();
