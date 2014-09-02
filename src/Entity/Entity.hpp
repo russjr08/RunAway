@@ -13,10 +13,11 @@ protected:
     Game* game;
     sf::Vector2f pos;
     std::vector<Component *> components;
+    sf::Sprite sprite;
 
     Level* _level;
 
-    float _health = 10.0f;
+    float _health = 7.0f;
 
 public:
     Entity(Game* game, Level* level) {
@@ -28,6 +29,8 @@ public:
     virtual void update(float);
 
     inline float getHealth() { return _health; }
+    inline sf::Vector2f getPos() { return pos; }
+    inline sf::Sprite getSprite() { return sprite; }
 
 };
 

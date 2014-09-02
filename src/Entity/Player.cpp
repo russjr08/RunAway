@@ -4,7 +4,6 @@
 
 // sf::RectangleShape shape(sf::Vector2f(50, 120));
 
-sf::Sprite sprite;
 
 sf::Texture texture_right;
 
