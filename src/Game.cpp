@@ -96,7 +96,7 @@ void Game::render(){
 }
 
 void Game::update(float delta){
-    _level->update();
+    _level->update(static_cast<sf::Window&>(window));
 
     for (Entity& entity : entities){
         entity.update(delta);
@@ -104,7 +104,7 @@ void Game::update(float delta){
 
     // Keep sun constantly on the top-right.
     sun.setPosition(sf::Vector2f((Game::WIDTH - 100) + this->getViewOffset().x, 0));
-    
+
     window.setView(_view);
 }
 

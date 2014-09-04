@@ -10,10 +10,12 @@ public:
     Level(std::string);
 
     void render(sf::RenderTarget*);
-    void update();
+    void update(sf::Window&);
+
+    Tile* getTile(sf::Vector2i);
 
 private:
-    std::vector<Tile *> _tiles;    
+    std::vector<Tile *> _tiles;
 };
 
 #endif
