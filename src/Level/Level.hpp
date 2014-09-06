@@ -12,7 +12,7 @@ public:
     void render(sf::RenderTarget*);
     void update(sf::Window&);
 
-    bool colliding(sf::Vector2i);
+    bool colliding(sf::FloatRect, sf::Vector2i);
 
     Tile* getTile(sf::Vector2i);
 

@@ -23,9 +23,9 @@ public:
     void setTileType(Tile::TileType);
 
     bool collideableTile();
+
+    inline sf::FloatRect getBoundingBox() { return _sprite.getGlobalBounds(); }
     inline Tile::TileType getTileType() { return _type; }
-
-
     inline sf::Vector2f getPos() { return _pos; }
 
 private:

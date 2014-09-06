@@ -49,7 +49,7 @@ void Entity::update(float delta){
     if(jumping){
         if(speed > 0){
             int newY = Player::JUMP_SPEED * speed;
-            if(!(_level->colliding(sf::Vector2i(this->pos.x, newY)))) {
+            if(!(_level->colliding(getSprite().getGlobalBounds(), sf::Vector2i(this->pos.x, newY)))) {
                 this->pos.y = Player::JUMP_SPEED * speed;
                 speed -= Player::JUMP_SPEED;
             }
@@ -58,14 +58,14 @@ void Entity::update(float delta){
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
         if(this->pos.x <= 0) return;
-        if(_level->colliding(sf::Vector2i(this->pos.x - Player::MOVE_SPEED, this->pos.y))) return;
+        if(_level->colliding(getSprite().getGlobalBounds(), sf::Vector2i(this->pos.x - Player::MOVE_SPEED, this->pos.y))) return;
         this->pos.x = this->pos.x - Player::MOVE_SPEED;
         game->getView().move(-4.2f, 0);
 
     }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-        if(_level->colliding(sf::Vector2i(this->pos.x + Player::MOVE_SPEED, this->pos.y))) return;
+        if(_level->colliding(getSprite().getGlobalBounds(), sf::Vector2i(this->pos.x + Player::MOVE_SPEED, this->pos.y))) return;
         this->pos.x = this->pos.x + Player::MOVE_SPEED;
         game->getView().move(4.2f, 0);
 
