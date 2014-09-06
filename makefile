@@ -58,8 +58,6 @@ $(objDir)%$(objEnd): $(srcDir)%.cpp
 
 ifdef linux
 	@mkdir -p $(@D)
-else
-	@if not exist $(subst /,\,$(@D)) mkdir $(subst /,\,$(@D)) > nul
 endif
 
 	@$(CC) -MM -MT $@ $(CFLAGS) $< > $@.d

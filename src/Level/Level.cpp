@@ -46,16 +46,25 @@ void Level::update(sf::Window& window) {
     }
 
     if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-        int x = sf::Mouse::getPosition(window).x + 1; // (The + 1 fixes some mouse oddities!)
+        int x = (sf::Mouse::getPosition(window).x + Game::getInstance()->getViewOffset().x) + 1; // (The + 1 fixes some mouse oddities!)
         int y = sf::Mouse::getPosition(window).y;
 
         this->getTile(sf::Vector2i(x, y))->setTileType(Tile::TileType::DIRT);
+<<<<<<< HEAD
 
     } else if(sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
         int x = sf::Mouse::getPosition(window).x + 1; // (The + 1 fixes some mouse oddities!)
         int y = sf::Mouse::getPosition(window).y;
 
         this->getTile(sf::Vector2i(x, y))->setTileType(Tile::TileType::AIR);
+=======
+>>>>>>> 902c6d323c1d7c13e3a453cf0c74717a8589d685
     }
 
+}
+
+// TODO: Patch this up. It's faulty!
+bool Level::colliding(sf::FloatRect boundingBox, sf::Vector2i pos) {
+    // Game::debug(std::to_string(getTile(sf::Vector2i(pos.x, pos.y))->getTileType()));
+    return boundingBox.intersects(getTile(sf::Vector2i(pos.x, pos.y))->getBoundingBox());
 }
