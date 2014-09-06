@@ -51,7 +51,11 @@ void Level::update(sf::Window& window) {
 
         this->getTile(sf::Vector2i(x, y))->setTileType(Tile::TileType::DIRT);
 
+    } else if(sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
+        int x = sf::Mouse::getPosition(window).x + 1; // (The + 1 fixes some mouse oddities!)
+        int y = sf::Mouse::getPosition(window).y;
 
+        this->getTile(sf::Vector2i(x, y))->setTileType(Tile::TileType::AIR);
     }
 
 }
