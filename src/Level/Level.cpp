@@ -46,12 +46,10 @@ void Level::update(sf::Window& window) {
     }
 
     if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-        int x = sf::Mouse::getPosition(window).x + 1; // (The + 1 fixes some mouse oddities!)
+        int x = (sf::Mouse::getPosition(window).x + Game::getInstance()->getViewOffset().x) + 1; // (The + 1 fixes some mouse oddities!)
         int y = sf::Mouse::getPosition(window).y;
 
         this->getTile(sf::Vector2i(x, y))->setTileType(Tile::TileType::DIRT);
-
-
     }
 
 }
