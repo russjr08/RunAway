@@ -44,3 +44,11 @@ void Tile::render(sf::RenderTarget* window) {
     window->draw(_sprite);
 
 }
+
+bool Tile::collideableTile() {
+    if(_type != Tile::TileType::AIR) {
+        return true;
+    }
+
+    return false;
+}

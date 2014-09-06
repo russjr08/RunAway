@@ -53,3 +53,9 @@ void Level::update(sf::Window& window) {
     }
 
 }
+
+// TODO: Patch this up. It's faulty!
+bool Level::colliding(sf::Vector2i pos) {
+    Game::debug(std::to_string(getTile(sf::Vector2i(pos.x, pos.y))->getTileType()));
+    return getTile(sf::Vector2i(pos.x, pos.y))->collideableTile();
+}
