@@ -25,7 +25,7 @@ endif
 sfmlDir = C:/SFML/TDM-SFML-2.1
 
 ifdef linux
-    CFLAGS=$(flags)
+    CFLAGS=-I/usr/local/include -L/usr/local/lib/ $(flags)
     objEnd=.lin.obj
     exe=bin/Game
 else

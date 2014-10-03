@@ -25,7 +25,6 @@ Tile* Level::getTile(sf::Vector2i pos) {
     for(auto tile : _tiles) {
         if((tile->getPos().x <= x && tile->getPos().x + Tile::TILE_SIZE >= x
             && tile->getPos().y <= y && tile->getPos().y + Tile::TILE_SIZE >= y)) {
-            Game::debug(std::to_string(tile->getTileType()));
             return tile;
         }
     }
@@ -63,8 +62,10 @@ void Level::update(sf::Window& window) {
 
 // TODO: Patch this up. It's faulty!
 bool Level::colliding(sf::FloatRect boundingBox, sf::Vector2i pos) {
-    // Game::debug(std::to_string(getTile(sf::Vector2i(pos.x, pos.y))->getTileType()));
+    Game::debug(std::to_string(getTile(sf::Vector2i(pos.x, pos.y))->getTileType()));
     Tile* toTest = getTile(pos);
     if(!toTest->collideableTile()) return false;
+    Game::debug(std::to_string(boundingBox.intersects(toTest->getBoundingBox())));
     return boundingBox.intersects(toTest->getBoundingBox());
+    //return toTest->collideableTile();
 }
