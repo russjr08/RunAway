@@ -7,7 +7,8 @@ Level::Level(std::string levelFile) {
 
     for(int y = 0; y < 18 * 32; y += 32) {
         for(int x = 0; x < 25 * 32; x += 32) {
-            _tiles.push_back(new Tile(Tile::TileType::AIR, sf::Vector2i(x, y)));
+            Tile* tile = new Tile(Tile::TileType::AIR, sf::Vector2i(x, y));
+            _tiles.push_back(tile);
         }
     }
 
@@ -22,6 +23,7 @@ Tile* Level::getTile(sf::Vector2i pos) {
     int x = pos.x;
     int y = pos.y;
 
+    
     for(auto tile : _tiles) {
         if((tile->getPos().x <= x && tile->getPos().x + Tile::TILE_SIZE >= x
             && tile->getPos().y <= y && tile->getPos().y + Tile::TILE_SIZE >= y)) {
